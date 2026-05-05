@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+openclaw_home="${HOME:-/var/home/openclaw}/.openclaw"
+config_file="$openclaw_home/openclaw.json"
+
+umask 077
+mkdir -p \
+  "$openclaw_home" \
+  "$openclaw_home/workspace" \
+  "$openclaw_home/skills" \
+  "$openclaw_home/cron"
+
+if [[ ! -f "$config_file" ]]; then
+  cat >"$config_file" <<'JSON'
+{
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token"
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        },
+        "responses": {
+          "enabled": true
+        }
+      }
+    },
+    "controlUi": {
+      "enabled": true,
+      "allowedOrigins": [
+        "http://127.0.0.1:18789",
+        "http://localhost:18789"
+      ]
+    }
+  }
+}
+JSON
+fi

@@ -1,0 +1,9 @@
+.DS_Store
+*.qcow2
+*.raw
+*.iso
+*.img
+*.zst
+/.tmp/
+out-tank-os/
+.playwright-mcp/
