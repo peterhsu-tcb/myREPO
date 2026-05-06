@@ -86,7 +86,7 @@ cat > out-tank-os/config.json <<'EOF'
     "user": [
       {
         "name": "openclaw",
-        "key": "ssh-ed25519 REPLACE_WITH_YOUR_PUBLIC_KEY tank-os",
+        "key": "ssh-ed25519 PASTE_YOUR_SSH_PUBLIC_KEY_HERE tank-os",
         "groups": ["wheel"]
       }
     ]
@@ -95,7 +95,7 @@ cat > out-tank-os/config.json <<'EOF'
 EOF
 ```
 
-Replace `REPLACE_WITH_YOUR_PUBLIC_KEY` with the content of `~/.ssh/id_ed25519.pub`.
+Replace `PASTE_YOUR_SSH_PUBLIC_KEY_HERE` with the content of `~/.ssh/id_ed25519.pub`.
 
 Run `bootc-image-builder` (on macOS, use the rootful Podman connection):
 
@@ -149,6 +149,10 @@ qemu-system-aarch64 \
   -netdev user,id=net0,hostfwd=tcp::2222-:22 \
   -nographic
 ```
+
+> **Note:** The firmware path above uses `brew --prefix`, which is correct for a
+> Homebrew QEMU install. If you installed QEMU another way, replace that path
+> with the location of `edk2-aarch64-code.fd` on your system.
 
 SSH is forwarded to `localhost:2222`. Skip to Step 6 and use port `2222`.
 
