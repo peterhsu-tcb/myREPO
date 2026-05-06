@@ -38,6 +38,7 @@ or tightly scoped sudo policy for OS management and bootc updates.
 
 ## Start Here
 
+- **Installation guide**: [docs/installation.md](docs/installation.md)
 - Build the image: [docs/build.md](docs/build.md)
 - Configure login access: [docs/provisioning.md](docs/provisioning.md)
 - Use the OpenClaw CLI: [docs/cli.md](docs/cli.md)
